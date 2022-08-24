@@ -1,6 +1,5 @@
 #!/bin/python
 import argparse
-#import sys
 import os
 from wallhaven.api import Wallhaven
 
@@ -49,3 +48,8 @@ else:
 results = wallhaven.search()
 for wallpaper in results.data:
     wallpaper.save(path)
+print("Wallpapers saved in ", path)
+try:
+    os.system("xdg-open" + path)
+except OSError as error:
+    print(error)
